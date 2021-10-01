@@ -3,6 +3,11 @@ uuid = "02417f24-3e64-4b02-bab8-293dc9f4cea3"
 authors = ["Matthew Fishman <mfishman@flatironinstitute.org> and contributors"]
 version = "0.0.1"
 
+[deps]
+ITensorInfiniteMPS = "1dc1fb26-a137-4954-ae60-1bd4106e95ad"
+ITensors = "9136182c-28ba-11e9-034c-db9fb085ebd5"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+
 [compat]
 julia = "1.6"
 
