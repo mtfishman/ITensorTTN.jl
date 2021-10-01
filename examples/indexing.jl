@@ -52,4 +52,3 @@ t_tot = t21 * t12
 
 v1 = randomITensor(QN(), input_inds(t_tot))
 @show inds(t_tot * v1)
-
