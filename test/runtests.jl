@@ -2,5 +2,5 @@ using ITensorTTN
 using Test
 
 @testset "ITensorTTN.jl" begin
-  # Write your tests here.
+  include(joinpath("..", "examples", "basics.jl"))
 end
