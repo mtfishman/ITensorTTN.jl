@@ -58,25 +58,25 @@ function InfiniteTTN(s::Vector{IndexT}, st; z::Integer, linkdims) where {IndexT<
             Index(link_space; tags = ttntags(; c = 0, d = 1, g = (mod1(n - 1, N) => n)))
         l_child = translatecell(l_parents[n], 1)
         l_children[n] = [replacetags(l_child, childtags(1) => childtags(d)) for d = 1:(z-1)]
-        ttn[n] = ITensor(dag(l_parents[n]), l_children[n], s∞[n])
+        ttn[n] = randomITensor(dag(l_parents[n]), l_children[n]) * product_state[n]
         return InfiniteTTN(ttn)
     end
     l_parents[n] =
         Index(link_space; tags = ttntags(; c = 0, d = 1, g = (mod1(n - 1, N) => n)))
     l_child = Index(link_space; tags = ttntags(; c = 1, g = (n => mod1(n + 1, N))))
     l_children[n] = [addtags(l_child, childtags(d)) for d = 1:(z-1)]
-    ttn[n] = ITensor(dag(l_parents[n]), l_children[n], s∞[n])
+    ttn[n] = randomITensor(dag(l_parents[n]), l_children[n]) * product_state[n]
     for n = 2:(N-1)
         l_parents[n] = first(l_children[n-1])
         l_child = Index(link_space; tags = ttntags(; c = 1, g = (n => mod1(n + 1, N))))
         l_children[n] = [addtags(l_child, childtags(d)) for d = 1:(z-1)]
-        ttn[n] = ITensor(dag(l_parents[n]), l_children[n], s∞[n])
+        ttn[n] = randomITensor(dag(l_parents[n]), l_children[n]) * product_state[n]
     end
     n = N
     l_parents[n] = first(l_children[n-1])
     l_child = translatecell(l_parents[1], 1)
     l_children[n] = [replacetags(l_child, childtags(1) => childtags(d)) for d = 1:(z-1)]
-    ttn[n] = ITensor(dag(l_parents[n]), l_children[n], s∞[n])
+    ttn[n] = randomITensor(dag(l_parents[n]), l_children[n]) * product_state[n]
     return InfiniteTTN(ttn)
 end
 

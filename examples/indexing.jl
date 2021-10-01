@@ -26,8 +26,8 @@ t12 = TransferMatrix(ψ, 2, 1 => 2)
 @show input_inds(t12)
 @show output_inds(t12)
 
-v1 = ITensor(input_inds(t12))
-v2 = ITensor(output_inds(t12))
+v1 = randomITensor(QN(), input_inds(t12))
+v2 = randomITensor(QN(), output_inds(t12))
 @show (dag(v2) * (t12 * v1))[]
 
 # Transfer matrix at generation 2 transforming
@@ -50,6 +50,6 @@ t_tot = t21 * t12
 @show input_inds(t_tot)
 @show output_inds(t_tot)
 
-v1 = ITensor(input_inds(t_tot))
+v1 = randomITensor(QN(), input_inds(t_tot))
 @show inds(t_tot * v1)
 
