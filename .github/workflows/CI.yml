@@ -36,7 +36,7 @@ jobs:
         shell: julia --project {0}
         run: |
           using Pkg;
-          pkg"dev . https://github.com/mtfishman/ITensorInfiniteMPS.jl"
+          pkg"dev https://github.com/mtfishman/ITensorInfiniteMPS.jl"
           Pkg.test("ITensorTTN"; coverage=true)
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
