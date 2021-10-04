@@ -33,6 +33,12 @@ jobs:
             ${{ runner.os }}-test-${{ env.cache-name }}-
             ${{ runner.os }}-test-
             ${{ runner.os }}-
+      - name: Install Julia dependencies
+        shell: julia
+        run: |
+          using Pkg;
+          pkg"dev . https://github.com/mtfishman/ITensorInfiniteMPS.jl"
+          Pkg.test("ITensorTTN"; coverage=true)
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
