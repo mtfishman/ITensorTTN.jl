@@ -59,6 +59,8 @@ jobs:
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
       - run: |
           julia --project=docs -e '
+            using Pkg
+            pkg"dev https://github.com/mtfishman/ITensorInfiniteMPS.jl"
             using Documenter: DocMeta, doctest
             using ITensorTTN
             DocMeta.setdocmeta!(ITensorTTN, :DocTestSetup, :(using ITensorTTN); recursive=true)
