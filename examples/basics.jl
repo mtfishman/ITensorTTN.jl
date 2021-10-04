@@ -21,21 +21,15 @@ for g in 0:(N + 2)
 end
 
 # Transfer matrix at generation 2 transforming
-# from branch 1 to 2
+# from branch 1 to 2 (towards the center)
 t12 = TransferMatrix(ψ, 2, 1 => 2)
+
 @show input_inds(t12)
 @show output_inds(t12)
 
 v1 = randomITensor(QN(), input_inds(t12))
 v2 = randomITensor(QN(), output_inds(t12))
 @show (dag(v2) * (t12 * v1))[]
-
-# Transfer matrix at generation 2 transforming
-# from branch 1 to 2 (towards the center)
-t12 = TransferMatrix(ψ, 2, 1 => 2)
-
-@show input_inds(t12)
-@show output_inds(t12)
 
 # Transfer matrix at generation 1 transforming
 # from branch 2 to 1 (towards the center)
